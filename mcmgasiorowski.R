@@ -73,11 +73,9 @@ trial.code = function(trial, word = 'test', scale = 'emotion'){
                 center.win(TXT)$move(c(0, WINDOW$get.size()[2] * .1))
                 WINDOW$draw(TXT)
                 value = draw.scale(scales[[as.character(scale)]][-1], position = .7)[1]
-            }else{
-                ## Słowo pokazujemy do końca czasu pokazywania słowa
-                if((CLOCK$time - scale.onset) > PRESENTATION.TIME)state = 'done'
             }
             WINDOW$display()
+            if((CLOCK$time - scale.onset) > PRESENTATION.TIME)state = 'done'
         }, 'done' = {
             WINDOW$clear(c(0, 0, 0))
             WINDOW$display()
